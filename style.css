@@ -1,0 +1,153 @@
+body {
+    min-height: 100vh;
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color : var(--clr-2)
+}
+
+@property --gradient-angle {
+    syntax: "<angle>";
+    initial-value : 0deg;
+    inherits: false;
+}
+
+@keyframes rotation {
+    0% { --gradient-angle : 0deg;}
+    100% { --gradient-angle : 100deg;}
+    
+}
+
+
+:root {
+    --clr-1 : #052b2f;
+    --clr-2 : #073438;
+    --clr-3 : #0e4b50;
+    --clr-4 : #2d8f85;
+    --clr-5 : #637c54;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.parent {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 10px;
+}
+   
+
+.vranger {
+ 
+     transform: rotate(90deg) translateX(50%);
+    -moz-transform: rotate(90deg) translateX(50%);; /*do same for other browsers if required*/
+  }
+
+
+
+#board {
+    
+
+
+    height: 200px;
+    width: 200px;
+
+    margin-bottom: 2rem;
+
+    position: relative;
+    border-radius: .5rem;
+
+   
+
+
+}
+
+#board::before,
+#board::after {
+    content: "";
+    position: absolute;
+    inset: -.5rem;
+    z-index: -1;
+
+    background: conic-gradient(from var(--gradient-angle),var(--clr-3),var(--clr-4),var(--clr-5),var(--clr-4),var(--clr-3));
+    border-radius: inherit;
+    animation: rotation 20s linear infinite;
+
+}
+
+#board::after {
+    filter: blur(2.5rem
+    );
+}
+
+
+
+.coolCss {
+    background-image: url(bg1.gif), linear-gradient(to right, rgb(59, 130, 246), rgb(147, 51, 234));
+    background-clip: border-box, text;
+    -webkit-background-clip: border-box, text;
+    -webkit-text-fill-color: transparent;
+    color: #e2fe00;
+    font-weight: 700;
+}
+
+
+.text {
+    vertical-align: auto;
+    margin: 0 auto;
+}
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+  }
+  
+  /* Show the snackbar when clicking on a button (class added with JavaScript) */
+  #snackbar.show {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+  
+  /* Animations to fade the snackbar in and out */
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
